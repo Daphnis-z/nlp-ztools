@@ -4,6 +4,7 @@
 # Github: https://github.com/Daphnis-z
 # CreatDate: 2021/6/22 22:24
 # Description: NLP算法样例代码
+from nlp.abstract.auto_abstract import AutoAbstract
 from nlp.entity import named_entity
 from nlp.keyword.keyword_extration import KeywordExtraction
 from nlp.utils import file_util
@@ -18,6 +19,7 @@ def keyword_demo():
     keyword_list = kw_extract.extract_keyword(content)
 
     print('extract keywords: {}'.format(keyword_list))
+    print('--' * 55)
 
 
 def named_entity_demo():
@@ -27,12 +29,18 @@ def named_entity_demo():
     entities = named_entity.extract_entity(content)
 
     print('extract named entities: {}'.format(entities))
+    print('--' * 55)
 
 
 def abstract_demo():
     """ 自动摘要 """
 
-    pass
+    content = file_util.read_whole_file('data/test005.txt')
+    abstract = AutoAbstract().generate_abstract(content, 3)
+
+    print('generate abstract: ')
+    print('  ' + abstract)
+    print('--' * 55)
 
 
 def text_similarity_demo():
@@ -44,3 +52,4 @@ def text_similarity_demo():
 if __name__ == '__main__':
     keyword_demo()
     named_entity_demo()
+    abstract_demo()
