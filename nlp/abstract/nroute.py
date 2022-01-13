@@ -298,32 +298,3 @@ class Segment:
             return list(self.seg_new_word(sentence))
         else:
             return list(self.seg_default(sentence))
-
-
-if __name__ == '__main__':
-    s = Segment()
-
-    # sg.load_userdict('dict/user.dict')
-    # s.load_userdict(['知识图谱'])
-
-    # text = '辽宁省铁岭市西丰县房木镇潭清村东屯' # bug
-    # text = '黑龙江省双鸭山市宝清县宝清镇通达街341号'
-    # text = '浙江省杭州市西湖区三墩镇紫宣路158号1幢801室'
-    # text = '北京市西城区茶马街8号院1号楼15层1502'
-    # text = '西藏自治区林芝市米林县羌纳乡羌渡岗村'
-    # text = '深圳市南山区西丽街道松坪山社区宝深路科陆大厦B座13层B05'
-    # text = '深圳市福田区福强路中港城裙楼6E部分602-A' # bug
-    # text = '深圳市福田区福保街道石厦北二街89号新港商城C座3305室'
-    # text = '五常市向阳镇致富村庆丰营屯'
-    # text = '中牟县中兴路与益民巷交叉口路南'
-    # text = '黄山市屯溪区华馨路38号二楼'
-    text = '银川市金凤区北京中路福宁城11-1-号'
-
-    # 直接将新词动态加入新词的字典中，有冲突的不加，加完记得删除
-
-    # words = s.seg(text)
-    # print(words)
-
-    words = s.seg(text, 'probe')
-    print('----------------')
-    print(words)

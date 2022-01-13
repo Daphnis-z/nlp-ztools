@@ -1,17 +1,17 @@
-#!/usr/bin/python3
-"""
-@File:   file_util.py
-@Author: yczou
-@Time:   2020-10-19 15:57:05
-@Desc:   存放文件处理相关的方法
-"""
+# !/usr/bin/python3
+# -*-coding:utf-8-*-
+# Author: Daphnis
+# Github: https://github.com/Daphnis-z
+# CreatDate: 2022/1/13 22:23
+# Description: 文件处理相关的方法
 import hashlib
 import os
 import traceback
 
 import chardet
 
-DEFAULT_ENCODING='utf-8'
+DEFAULT_ENCODING = 'utf-8'
+
 
 def write_lines(lines, file_name):
     """

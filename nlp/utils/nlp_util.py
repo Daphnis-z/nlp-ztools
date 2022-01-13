@@ -4,11 +4,12 @@
 # Github: https://github.com/Daphnis-z
 # CreatDate: 2022/1/13 21:12
 # Description:
+import codecs
 import math
 
-from nlp.abstract.nroute import Segment
+from jieba import posseg
 
-seg = Segment()
+from nlp.abstract.nroute import Segment
 
 
 def different(scores, old_scores, tol=0.0001):
@@ -36,6 +37,19 @@ def sentences_similarity(s1, s2):
     return counter / (math.log(len(s1) + len(s2)))
 
 
+def cut_words(text, stop_flag=['x', 'c', 'u', 'd', 'p', 't', 'uj', 'm', 'f', 'r']):
+    """ 将文本切成词语 """
+    stop_words = codecs.open('etc/stopwords.txt', 'r', encoding='utf8').readlines()
+    stop_words = [w.strip() for w in stop_words]
+
+    result = []
+    words = posseg.cut(text)
+    for word, flag in words:
+        if flag not in stop_flag and word not in stop_words:
+            result.append(word)
+    return result
+
+
 def cut_sentences(text):
     """
     将文本切成句子
@@ -59,6 +73,8 @@ def as_text(v):
 
 
 def cut_filter_words(cutted_sentences, stopwords, use_stopwords=False):
+    seg = Segment()
+
     sentences = []
     sents = []
     for sent in cutted_sentences:
